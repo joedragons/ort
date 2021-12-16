@@ -100,12 +100,8 @@ private fun createScanner(
     downloaderConfig: DownloaderConfiguration
 ): PathScanner =
     object : PathScanner(SCANNER_NAME, scannerConfig, downloaderConfig) {
+        override val version = SCANNER_VERSION
         override val configuration = "someConfig"
 
-        override val expectedVersion: String
-            get() = SCANNER_VERSION
-
         override fun scanPathInternal(path: File) = throw NotImplementedError()
-
-        override fun command(workingDir: File?) = throw NotImplementedError()
     }
